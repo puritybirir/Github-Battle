@@ -27,6 +27,7 @@
   "homepage": "https://github.com/puritybirir/Github-Battle#readme",
   "dependencies": {
     "axios": "^0.17.1",
+    "babel-polyfill": "^6.26.0",
     "prop-types": "^15.6.0",
     "query-string": "^5.0.1",
     "react": "^16.2.0",
