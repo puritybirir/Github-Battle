@@ -2,15 +2,15 @@ const axios = require('axios');
 
 const id = "YOUR_CLIENT_ID";
 const sec = "YOUR_SECRET_ID";
-const params = `?client_id= ${id}&client_secret=${sec}`;
+const params = `?client_id=${id}&client_secret=${sec}`;
 
 function getProfile (username) {
-  return axios.get(`https://api.github.com/users/ ${username}${params}`)
+  return axios.get(`https://api.github.com/users/${username}${params}`)
     .then(({ data }) => data );
 }
 
 function getRepos (username) {
-  return axios.get(`https://api.github.com/users/ ${username}/repos${params} &per_page=100`);
+  return axios.get(`https://api.github.com/users/${username}/repos${params}&per_page=100`);
 }
 
 function getStarCount (repos) {
@@ -30,7 +30,7 @@ function getUserData (player) {
   return Promise.all([
     getProfile(player),
     getRepos(player)
-  ]).then(([profile, data]) => ({
+  ]).then(([profile, repos]) => ({
       profile,
       score: calculateScore(profile, repos)
   }));
@@ -41,7 +41,7 @@ function sortPlayers (players) {
 }
 
 module.exports = {
-  battle: function (players) {
+  battle (players) {
     return Promise.all(players.map(getUserData))
       .then(sortPlayers)
       .catch(handleError);
