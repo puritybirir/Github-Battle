@@ -1,2 +1,7 @@
 # Github-Battle
-To follow the Tyler McGinnis React course 
+Application to battle GitHub repositories and show the most popular GitHub repositories
+
+
+# Built with?
+- React
+- Firebase
